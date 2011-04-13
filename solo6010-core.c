@@ -467,6 +467,8 @@ static DEFINE_PCI_DEVICE_TABLE(solo6010_id_table) = {
 	  .driver_data = SOLO_DEV_6110 },
 	{ PCI_DEVICE(PCI_VENDOR_ID_BLUECHERRY, PCI_DEVICE_ID_BC_6110_16),
 	  .driver_data = SOLO_DEV_6110 },
+	{ PCI_DEVICE(PCI_VENDOR_ID_ID3AS, PCI_DEVICE_ID_ID3AS),
+          .driver_data = SOLO_DEV_6110 },
 	{0,}
 };
 
