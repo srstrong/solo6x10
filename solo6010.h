@@ -42,6 +42,7 @@
 
 #ifndef PCI_VENDOR_ID_SOFTLOGIC
 #define PCI_VENDOR_ID_SOFTLOGIC		0x9413
+#define PCI_VENDOR_ID_ID3AS             0x9413
 #define PCI_DEVICE_ID_SOLO6010		0x6010
 #endif
 
@@ -56,6 +57,7 @@
 #define PCI_DEVICE_ID_BC_SOLO_9		0x4E09
 #define PCI_DEVICE_ID_BC_SOLO_16	0x4E10
 /* Bluecherry Softlogic 6110 based cards */
+#define PCI_DEVICE_ID_ID3AS             0x6110
 #define PCI_DEVICE_ID_BC_6110_4		0x5304
 #define PCI_DEVICE_ID_BC_6110_8		0x5308
 #define PCI_DEVICE_ID_BC_6110_16	0x5310
