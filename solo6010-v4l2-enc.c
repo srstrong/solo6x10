@@ -30,36 +30,14 @@
 #include "solo6010-tw28.h"
 #include "solo6010-jpeg.h"
 
+#include "squirt_extensions.h"
+
 #define MIN_VID_BUFFERS		2
 #define FRAME_BUF_SIZE		(128 * 1024)
 #define MP4_QS			16
 #define DMA_ALIGN		128
 
 extern unsigned video_nr;
-
-enum solo_enc_types {
-	SOLO_ENC_TYPE_STD,
-	SOLO_ENC_TYPE_EXT,
-};
-
-struct solo_enc_fh {
-	struct			solo_enc_dev *enc;
-	u32			fmt;
-	u8			enc_on;
-	enum solo_enc_types	type;
-	struct videobuf_queue	vidq;
-	struct list_head	vidq_active;
-	int			desc_count;
-	int			desc_nelts;
-        struct solo_p2m_desc	*desc_items;
-	dma_addr_t		desc_dma;
-	struct list_head	list;
-};
-
-struct solo_videobuf {
-	struct videobuf_buffer	vb;
-	unsigned int		flags;
-};
 
 /* 6010 M4V */
 static unsigned char vop_6010_ntsc_d1[] = {
@@ -1578,6 +1556,9 @@ static const struct v4l2_ioctl_ops solo_enc_ioctl_ops = {
 	.vidioc_s_ctrl			= solo_s_ctrl,
 	.vidioc_g_ext_ctrls		= solo_g_ext_ctrls,
 	.vidioc_s_ext_ctrls		= solo_s_ext_ctrls,
+
+	/* Private */
+	.vidioc_default                 = squirtbox_ioctl,
 };
 
 static struct video_device solo_enc_template = {

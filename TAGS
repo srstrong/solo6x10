@@ -1,0 +1,1121 @@
+
+Makefile,149
+KERNELDIR	1,0
+solo6x10-objs	6,92
+solo6x10-objs +=solo6x10-objs +13,393
+obj-m	16,439
+all:all18,461
+install:install21,527
+clean:clean24,605
+
+solo6010-core.c,751
+static int full_eeprom;34,1232
+void solo6010_irq_on(38,1400
+void solo6010_irq_off(44,1560
+static void solo_set_time(50,1722
+static void solo_timer_sync(59,1938
+static irqreturn_t solo6010_isr(96,2722
+static void free_solo_dev(141,3688
+static ssize_t solo_set_eeprom(185,4585
+static ssize_t solo_get_eeprom(216,5426
+static struct device_attribute *const solo_dev_attrs[solo_dev_attrs232,5912
+static void solo_device_release(236,5994
+static int __devinit solo_sysfs_init(241,6069
+static int __devinit solo6010_pci_probe(273,6760
+static void __devexit solo6010_pci_remove(440,10712
+static struct pci_driver solo6010_pci_driver 477,12132
+static int __init solo6010_module_init(484,12303
+static void __exit solo6010_module_exit(491,12489
+
+solo6010-disp.c,621
+#define SOLO_VCLK_DELAY	27,980
+#define SOLO_PROGRESSIVE_VSIZE	28,1008
+#define SOLO_MOT_THRESH_W	30,1046
+#define SOLO_MOT_THRESH_H	31,1076
+#define SOLO_MOT_THRESH_SIZE	32,1106
+#define SOLO_MOT_THRESH_REAL	33,1141
+#define SOLO_MOT_FLAG_SIZE	34,1211
+#define SOLO_MOT_FLAG_AREA	35,1243
+static unsigned video_type;37,1298
+static void solo_vin_config(41,1437
+static void solo_disp_config(106,3790
+static int solo_dma_vin_region(154,5406
+void solo_set_motion_threshold(172,5786
+void solo_set_motion_block(182,6037
+static void solo_motion_config(210,6825
+int solo_disp_init(241,7838
+void solo_disp_exit(269,8457
+
+solo6010-eeprom.c,666
+#define EE_SHIFT_CLK	25,909
+#define EE_CS	26,935
+#define EE_DATA_WRITE	27,955
+#define EE_WRITE_0	28,982
+#define EE_WRITE_1	29,1006
+#define EE_DATA_READ	30,1030
+#define EE_ENB	31,1056
+#define eeprom_delay(33,1088
+#define eeprom_delay(36,1196
+#define ADDR_LEN	43,1362
+#define EE_EWEN_CMD	46,1397
+#define EE_EWDS_CMD	47,1419
+#define EE_WRITE_CMD	48,1441
+#define EE_READ_CMD	49,1464
+#define EE_ERASE_CMD	50,1486
+static unsigned int solo_eeprom_reg_read(52,1510
+static void solo_eeprom_reg_write(57,1665
+static void solo_eeprom_cmd(63,1813
+unsigned int solo_eeprom_ewen(81,2314
+unsigned short solo_eeprom_read(103,2943
+int solo_eeprom_write(123,3430
+
+solo6010-enc.c,332
+#define CAPTURE_MAX_BANDWIDTH	26,945
+#define VI_PROG_HSIZE	28,1005
+#define VI_PROG_VSIZE	29,1041
+#define IRQ_LEVEL	31,1078
+static void solo_capture_config(33,1101
+int solo_osd_print(123,3968
+static void solo_jpeg_config(170,5066
+static void solo_mp4e_config(183,5537
+int solo_enc_init(236,7408
+void solo_enc_exit(252,7732
+
+solo6010-g723.c,1376
+#define G723_FDMA_PAGES	34,1129
+#define G723_PERIOD_BYTES	35,1157
+#define G723_PERIOD_BLOCK	36,1186
+#define G723_FRAMES_PER_PAGE	37,1217
+#define OUTMODE_MASK	40,1314
+#define SAMPLERATE	42,1343
+#define BITRATE	43,1368
+#define G723_MAX_BUFFER	48,1586
+#define G723_INTR_ORDER	49,1645
+#define PERIODS_MIN	50,1681
+#define PERIODS_MAX	51,1725
+struct solo_snd_pcm 53,1763
+	int				on;54,1785
+	spinlock_t			lock;55,1797
+	struct solo6010_dev		*solo_dev;solo_dev56,1817
+	unsigned char			*g723_buf;g723_buf57,1850
+	dma_addr_t			g723_dma;58,1878
+static void solo_g723_config(61,1906
+void solo_g723_isr(81,2557
+static int snd_solo_hw_params(105,3138
+static int snd_solo_hw_free(111,3319
+static struct snd_pcm_hardware snd_solo_pcm_hw 116,3418
+static int snd_solo_pcm_open(134,3956
+static int snd_solo_pcm_close(160,4555
+static int snd_solo_pcm_trigger(172,4883
+static int snd_solo_pcm_prepare(206,5696
+static snd_pcm_uframes_t snd_solo_pcm_pointer(211,5781
+static int snd_solo_pcm_copy(220,6086
+static struct snd_pcm_ops snd_solo_pcm_ops 249,6858
+static int snd_solo_capture_volume_info(261,7190
+static int snd_solo_capture_volume_get(273,7468
+static int snd_solo_capture_volume_put(284,7768
+static struct snd_kcontrol_new snd_solo_capture_volume 300,8200
+static int solo_snd_pcm_init(308,8441
+int solo_g723_init(344,9266
+void solo_g723_exit(406,10790
+
+solo6010-gpio.c,202
+static void solo_gpio_mode(26,942
+static void solo_gpio_set(61,1672
+static void solo_gpio_clear(67,1863
+static void solo_gpio_config(73,2057
+int solo_gpio_init(93,2616
+void solo_gpio_exit(99,2725
+
+solo6010.h,4764
+#define __SOLO6010_H21,866
+#define videobuf_queue_to_vmalloc 40,1281
+#define PCI_VENDOR_ID_SOFTLOGIC	44,1379
+#define PCI_VENDOR_ID_ID3AS 45,1419
+#define PCI_DEVICE_ID_SOLO6010	46,1466
+#define PCI_VENDOR_ID_BLUECHERRY	50,1546
+#define PCI_DEVICE_ID_NEUSOLO_4	52,1627
+#define PCI_DEVICE_ID_NEUSOLO_9	53,1667
+#define PCI_DEVICE_ID_NEUSOLO_16	54,1707
+#define PCI_DEVICE_ID_BC_SOLO_4	56,1791
+#define PCI_DEVICE_ID_BC_SOLO_9	57,1831
+#define PCI_DEVICE_ID_BC_SOLO_16	58,1871
+#define PCI_DEVICE_ID_ID3AS 60,1955
+#define PCI_DEVICE_ID_BC_6110_4	61,2002
+#define PCI_DEVICE_ID_BC_6110_8	62,2042
+#define PCI_DEVICE_ID_BC_6110_16	63,2082
+#define SOLO_DEV_6010	67,2195
+#define SOLO_DEV_6110	68,2221
+#define SOLO6010_NAME	70,2248
+#define SOLO_MAX_CHANNELS	72,2284
+#define SOLO6010_VER_MAJOR	75,2347
+#define SOLO6010_VER_MINOR	76,2377
+#define SOLO6010_VER_SUB	77,2407
+#define SOLO6010_VER_NUM 78,2435
+#define SOLO6010_VERSION 80,2539
+#define SOLO_I2C_ADAPTERS	90,2786
+#define SOLO_I2C_TW	91,2815
+#define SOLO_I2C_SAA	92,2839
+#define SOLO_NR_P2M	95,2888
+#define SOLO_NR_P2M_DESC	96,2912
+#define SOLO_P2M_DESC_SIZE	97,2942
+#define SOLO_ENC_MODE_CIF	100,3024
+#define SOLO_ENC_MODE_HD1	101,3053
+#define SOLO_ENC_MODE_D1	102,3082
+#define SOLO_DEFAULT_GOP	104,3111
+#define SOLO_DEFAULT_QP	105,3140
+#define V4L2_BUF_FLAG_MOTION_ON	108,3201
+#define V4L2_BUF_FLAG_MOTION_DETECTED	109,3241
+#define PRIVATE_CIDS112,3324
+#define V4L2_CID_MOTION_ENABLE	113,3345
+#define V4L2_CID_MOTION_THRESHOLD	114,3403
+#define V4L2_CID_MOTION_TRACE	115,3463
+enum SOLO_I2C_STATE 118,3528
+	IIC_STATE_IDLE,119,3550
+	IIC_STATE_START,120,3567
+	IIC_STATE_READ,121,3585
+	IIC_STATE_WRITE,122,3602
+	IIC_STATE_STOP123,3620
+struct solo_p2m_desc 127,3702
+	u32	ctrl;128,3725
+	u32	cfg;129,3736
+	u32	dma_addr;130,3746
+	u32	ext_addr;131,3761
+struct solo_p2m_dev 134,3780
+	struct mutex		mutex;135,3802
+	struct completion	completion;136,3824
+	int			error;137,3855
+#define OSD_TEXT_MAX	140,3873
+struct solo_enc_dev 142,3899
+	struct solo6010_dev	*solo_dev;solo_dev143,3921
+	struct video_device	*vfd;vfd145,3971
+	spinlock_t		av_lock;147,4024
+	struct mutex		enable_lock;148,4046
+	spinlock_t		motion_lock;149,4074
+	atomic_t		readers;150,4100
+	atomic_t		mpeg_readers;151,4120
+	u8			ch;152,4145
+	u8			mode,153,4155
+	u8			mode, gop,153,4155
+	u8			mode, gop, qp,153,4155
+	u8			mode, gop, qp, interlaced,153,4155
+	u8			mode, gop, qp, interlaced, interval;153,4155
+	u8			bw_weight;154,4198
+	u16			motion_thresh;155,4215
+	u16			width;156,4237
+	u16			height;157,4251
+	char			osd_text[osd_text160,4286
+	u8			osd_buf[osd_buf161,4322
+	struct mutex		osd_mutex;163,4394
+	unsigned char		vop[vop166,4438
+	int			vop_len;167,4463
+	unsigned char		jpeg_header[jpeg_header168,4479
+	int			jpeg_len;169,4514
+	struct list_head	listeners;172,4583
+struct solo6010_dev 176,4646
+	struct pci_dev		*pdev;pdev178,4689
+	int			type;179,4713
+	unsigned int		time_sync;180,4726
+	unsigned int		usec_lsb;181,4752
+	unsigned int		clock_mhz;182,4777
+	u8 __iomem		*reg_base;reg_base183,4803
+	int			nr_chans;184,4827
+	int			nr_ext;185,4844
+	u32			irq_mask;186,4859
+	u32			motion_mask;187,4876
+	rwlock_t		reg_io_lock;188,4896
+	u8			tw2865,191,4946
+	u8			tw2865, tw2864,191,4946
+	u8			tw2865, tw2864, tw2815;191,4946
+	u8			tw28_cnt;192,4976
+	struct i2c_adapter	i2c_adap[i2c_adap195,5018
+	enum SOLO_I2C_STATE	i2c_state;196,5067
+	struct mutex		i2c_mutex;197,5099
+	int			i2c_id;198,5125
+	wait_queue_head_t	i2c_wait;199,5140
+	struct i2c_msg		*i2c_msg;i2c_msg200,5169
+	unsigned int		i2c_msg_num;201,5196
+	unsigned int		i2c_msg_ptr;202,5224
+	struct solo_p2m_dev	p2m_dev[p2m_dev205,5275
+	atomic_t		p2m_count;206,5318
+	int			p2m_msecs;207,5340
+	struct video_device	*vfd;vfd210,5385
+	unsigned int		erasing;211,5412
+	unsigned int		frame_blank;212,5436
+	u8			cur_disp_ch;213,5464
+	wait_queue_head_t	disp_thread_wait;214,5483
+	struct solo_enc_dev	*v4l2_enc[v4l2_enc217,5547
+	u16			enc_bw_remain;218,5598
+	u8			enc_idx;220,5651
+	u32 			video_type;223,5697
+	u16			video_hsize,224,5717
+	u16			video_hsize, video_vsize;224,5717
+	u16			vout_hstart,225,5750
+	u16			vout_hstart, vout_vstart;225,5750
+	u16			vin_hstart,226,5783
+	u16			vin_hstart, vin_vstart;226,5783
+	u8			fps;227,5814
+	struct snd_card		*snd_card;snd_card230,5850
+	struct snd_pcm		*snd_pcm;snd_pcm231,5879
+	atomic_t		snd_users;232,5906
+	int			g723_hw_idx;233,5928
+	struct device		dev;236,5969
+	struct task_struct	*ring_thread;ring_thread239,6010
+	wait_queue_head_t	ring_thread_wait;240,6044
+	atomic_t		enc_users;241,6081
+	atomic_t		disp_users;242,6103
+static inline u32 solo_reg_read(245,6130
+static inline void solo_reg_write(263,6486
+#define SOLO_DEF_MOT_THRESH	339,9208
+
+solo6010-i2c.c,478
+u8 solo_i2c_readbyte(32,1404
+void solo_i2c_writebyte(52,1765
+static void solo_i2c_flush(68,2047
+static void solo_i2c_start(91,2531
+static void solo_i2c_stop(103,2810
+static int solo_i2c_handle_read(111,3030
+static int solo_i2c_handle_write(140,3575
+int solo_i2c_isr(172,4245
+static int solo_i2c_master_xfer(211,5072
+static u32 solo_i2c_functionality(264,6181
+static struct i2c_algorithm solo_i2c_algo 269,6268
+int solo_i2c_init(274,6398
+void solo_i2c_exit(319,7398
+
+solo6010-jpeg.h,115
+#define __SOLO6010_JPEG_H21,871
+static unsigned char jpeg_header[jpeg_header23,898
+#define SOF0_START	103,4731
+
+solo6010-offsets.h,945
+#define __SOLO6010_OFFSETS_H21,874
+#define SOLO_DISP_EXT_ADDR(24,952
+#define SOLO_DISP_EXT_SIZE	25,999
+#define SOLO_DEC2LIVE_EXT_ADDR(27,1040
+#define SOLO_DEC2LIVE_EXT_SIZE	29,1133
+#define SOLO_OSG_EXT_ADDR(31,1178
+#define SOLO_OSG_EXT_SIZE	33,1274
+#define SOLO_EOSD_EXT_ADDR(35,1314
+#define SOLO_EOSD_EXT_SIZE	37,1401
+#define SOLO_MOTION_EXT_ADDR(39,1442
+#define SOLO_MOTION_EXT_SIZE	42,1559
+#define SOLO_G723_EXT_ADDR(44,1602
+#define SOLO_G723_EXT_SIZE	46,1695
+#define SOLO_CAP_EXT_ADDR(48,1736
+#define SOLO_CAP_EXT_MAX_PAGE	50,1824
+#define SOLO_CAP_EXT_SIZE	51,1866
+#define SOLO_EREF_EXT_ADDR(54,1972
+#define SOLO_EREF_EXT_SIZE	57,2091
+#define SOLO_MP4E_EXT_ADDR(59,2132
+#define SOLO_MP4E_EXT_SIZE(62,2247
+#define SOLO_DREF_EXT_ADDR(64,2316
+#define SOLO_DREF_EXT_SIZE	66,2413
+#define SOLO_MP4D_EXT_ADDR(68,2454
+#define SOLO_MP4D_EXT_SIZE	71,2569
+#define SOLO_JPEG_EXT_ADDR(73,2610
+#define SOLO_JPEG_EXT_SIZE(76,2725
+
+solo6010-p2m.c,238
+int solo_p2m_dma(24,900
+int solo_p2m_dma_desc(49,1552
+void solo_p2m_fill_desc(106,3160
+int solo_p2m_dma_t(124,3651
+void solo_p2m_isr(137,4024
+void solo_p2m_error_isr(142,4132
+void solo_p2m_exit(158,4473
+int solo_p2m_init(166,4619
+
+solo6010-p2m.o,76
+¡Ó¡Ê	Œ¡·	À	”âpâãUâxã$ãt$ã|$â$2,127
+¡Ó¡Ê	Œ¡·	À	”âuËu4,1870
+
+solo6010-registers.h,19385
+#define __SOLO6010_REGISTERS_H21,876
+#define SOLO_SYS_CFG	26,978
+#define   SOLO_SYS_CFG_FOUT_EN	27,1009
+#define   SOLO_SYS_CFG_PLL_BYPASS	28,1053
+#define   SOLO_SYS_CFG_PLL_PWDN	29,1099
+#define   SOLO_SYS_CFG_OUTDIV(30,1144
+#define   SOLO_SYS_CFG_FEEDBACKDIV(31,1203
+#define   SOLO_SYS_CFG_INPUTDIV(32,1267
+#define   SOLO_SYS_CFG_CLOCK_DIV	33,1329
+#define   SOLO_SYS_CFG_NCLK_DELAY(34,1374
+#define   SOLO_SYS_CFG_PCLK_DELAY(35,1438
+#define   SOLO_SYS_CFG_SDRAM64BIT	36,1502
+#define   SOLO_SYS_CFG_RESET	37,1548
+#define	SOLO_DMA_CTRL	39,1591
+#define	  SOLO_DMA_CTRL_REFRESH_CYCLE(40,1623
+#define	  SOLO_DMA_CTRL_SDRAM_SIZE(42,1725
+#define	  SOLO_DMA_CTRL_SDRAM_CLK_INVERT	43,1773
+#define	  SOLO_DMA_CTRL_STROBE_SELECT	44,1821
+#define	  SOLO_DMA_CTRL_READ_DATA_SELECT	45,1867
+#define	  SOLO_DMA_CTRL_READ_CLK_SELECT	46,1915
+#define	  SOLO_DMA_CTRL_LATENCY(47,1963
+#define SOLO_DMA_CTRL1	50,2078
+#define SOLO_SYS_VCLK	52,2112
+#define	  SOLO_VCLK_INVERT	53,2144
+#define	  SOLO_VCLK_SELECT(55,2240
+#define	  SOLO_VCLK_VIN1415_DELAY(56,2282
+#define	  SOLO_VCLK_VIN1213_DELAY(57,2330
+#define	  SOLO_VCLK_VIN1011_DELAY(58,2378
+#define	  SOLO_VCLK_VIN0809_DELAY(59,2426
+#define	  SOLO_VCLK_VIN0607_DELAY(60,2473
+#define	  SOLO_VCLK_VIN0405_DELAY(61,2520
+#define	  SOLO_VCLK_VIN0203_DELAY(62,2567
+#define	  SOLO_VCLK_VIN0001_DELAY(63,2614
+#define SOLO_IRQ_STAT	65,2662
+#define SOLO_IRQ_ENABLE	66,2694
+#define	  SOLO_IRQ_P2M(67,2728
+#define	  SOLO_IRQ_GPIO	68,2770
+#define	  SOLO_IRQ_VIDEO_LOSS	69,2805
+#define	  SOLO_IRQ_VIDEO_IN	70,2845
+#define	  SOLO_IRQ_MOTION	71,2883
+#define	  SOLO_IRQ_ATA_CMD	72,2919
+#define	  SOLO_IRQ_ATA_DIR	73,2956
+#define	  SOLO_IRQ_PCI_ERR	74,2993
+#define	  SOLO_IRQ_PS2_1	75,3030
+#define	  SOLO_IRQ_PS2_0	76,3064
+#define	  SOLO_IRQ_SPI	77,3098
+#define	  SOLO_IRQ_IIC	78,3131
+#define	  SOLO_IRQ_UART(79,3164
+#define	  SOLO_IRQ_G723	80,3208
+#define	  SOLO_IRQ_DECODER	81,3242
+#define	  SOLO_IRQ_ENCODER	82,3278
+#define SOLO_CHIP_OPTION	84,3315
+#define   SOLO_CHIP_ID_MASK	85,3349
+#define SOLO_PLL_CONFIG	87,3391
+#define SOLO_EEPROM_CTRL	89,3442
+#define	  SOLO_EEPROM_ACCESS_EN	90,3476
+#define	  SOLO_EEPROM_CS	91,3517
+#define	  SOLO_EEPROM_CLK	92,3551
+#define	  SOLO_EEPROM_DO	93,3586
+#define	  SOLO_EEPROM_DI	94,3620
+#define	  SOLO_EEPROM_ENABLE	95,3654
+#define SOLO_PCI_ERR	97,3727
+#define   SOLO_PCI_ERR_FATAL	98,3758
+#define   SOLO_PCI_ERR_PARITY	99,3800
+#define   SOLO_PCI_ERR_TARGET	100,3843
+#define   SOLO_PCI_ERR_TIMEOUT	101,3886
+#define   SOLO_PCI_ERR_P2M	102,3930
+#define   SOLO_PCI_ERR_ATA	103,3970
+#define   SOLO_PCI_ERR_P2M_DESC	104,4010
+#define   SOLO_PCI_ERR_FSM0(105,4055
+#define   SOLO_PCI_ERR_FSM1(106,4112
+#define   SOLO_PCI_ERR_FSM2(107,4169
+#define SOLO_P2M_BASE	109,4227
+#define SOLO_P2M_CONFIG(111,4260
+#define	  SOLO_P2M_DMA_INTERVAL(112,4311
+#define	  SOLO_P2M_CSC_BYTE_REORDER	113,4373
+#define	  SOLO_P2M_CSC_16BIT_565	115,4498
+#define	  SOLO_P2M_UV_SWAP	116,4539
+#define	  SOLO_P2M_PCI_MASTER_MODE	117,4575
+#define	  SOLO_P2M_DESC_INTR_OPT	118,4618
+#define	  SOLO_P2M_DESC_MODE	119,4681
+#define SOLO_P2M_DES_ADR(121,4720
+#define SOLO_P2M_DESC_ID(123,4773
+#define	  SOLO_P2M_UPDATE_ID(124,4825
+#define SOLO_P2M_STATUS(126,4869
+#define	  SOLO_P2M_COMMAND_DONE	127,4920
+#define	  SOLO_P2M_CURRENT_ID(128,4961
+#define SOLO_P2M_CONTROL(130,5015
+#define	  SOLO_P2M_PCI_INC(131,5067
+#define	  SOLO_P2M_REPEAT(132,5109
+#define	  SOLO_P2M_BURST_SIZE(134,5202
+#define	    SOLO_P2M_BURST_512	135,5245
+#define	    SOLO_P2M_BURST_256	136,5280
+#define	    SOLO_P2M_BURST_128	137,5315
+#define	    SOLO_P2M_BURST_64	138,5350
+#define	    SOLO_P2M_BURST_32	139,5384
+#define	  SOLO_P2M_CSC_16BIT	140,5418
+#define	  SOLO_P2M_ALPHA_MODE(142,5546
+#define	  SOLO_P2M_CSC_ON	143,5589
+#define	  SOLO_P2M_INTERRUPT_REQ	144,5624
+#define	  SOLO_P2M_WRITE	145,5665
+#define	  SOLO_P2M_TRANS_ON	146,5699
+#define SOLO_P2M_EXT_CFG(148,5737
+#define	  SOLO_P2M_EXT_INC(149,5789
+#define	  SOLO_P2M_COPY_SIZE(150,5831
+#define SOLO_P2M_TAR_ADR(152,5875
+#define SOLO_P2M_EXT_ADR(154,5928
+#define SOLO_P2M_BUFFER(156,5981
+#define SOLO_VI_CH_SWITCH_0	158,6030
+#define SOLO_VI_CH_SWITCH_1	159,6067
+#define SOLO_VI_CH_SWITCH_2	160,6104
+#define	SOLO_VI_CH_ENA	162,6142
+#define	SOLO_VI_CH_FORMAT	163,6175
+#define	  SOLO_VI_FD_SEL_MASK(164,6210
+#define	  SOLO_VI_PROG_MASK(165,6254
+#define SOLO_VI_FMT_CFG	167,6297
+#define	  SOLO_VI_FMT_CHECK_VCOUNT	168,6331
+#define	  SOLO_VI_FMT_CHECK_HCOUNT	169,6375
+#define   SOLO_VI_FMT_TEST_SIGNAL	170,6419
+#define	SOLO_VI_PAGE_SW	172,6463
+#define	  SOLO_FI_INV_DISP_LIVE(173,6497
+#define	  SOLO_FI_INV_DISP_OUT(174,6542
+#define	  SOLO_DISP_SYNC_FI(175,6586
+#define	  SOLO_PIP_PAGE_ADD(176,6628
+#define	  SOLO_NORMAL_PAGE_ADD(177,6670
+#define	SOLO_VI_ACT_I_P	179,6715
+#define	SOLO_VI_ACT_I_S	180,6749
+#define	SOLO_VI_ACT_P	181,6783
+#define	  SOLO_VI_FI_INVERT	182,6815
+#define	  SOLO_VI_H_START(183,6853
+#define	  SOLO_VI_V_START(184,6894
+#define	  SOLO_VI_V_STOP(185,6935
+#define SOLO_VI_STATUS0	187,6975
+#define   SOLO_VI_STATUS0_PAGE(188,7009
+#define SOLO_VI_STATUS1	189,7061
+#define DISP_PAGE(192,7150
+#define SOLO_VI_PB_CONFIG	194,7194
+#define	  SOLO_VI_PB_USER_MODE	195,7229
+#define	  SOLO_VI_PB_PAL	196,7269
+#define SOLO_VI_PB_RANGE_HV	197,7303
+#define	  SOLO_VI_PB_HSIZE(198,7340
+#define	  SOLO_VI_PB_VSIZE(199,7382
+#define SOLO_VI_PB_ACT_H	200,7423
+#define	  SOLO_VI_PB_HSTART(201,7457
+#define	  SOLO_VI_PB_HSTOP(202,7500
+#define SOLO_VI_PB_ACT_V	203,7541
+#define	  SOLO_VI_PB_VSTART(204,7575
+#define	  SOLO_VI_PB_VSTOP(205,7618
+#define	SOLO_VI_MOSAIC(207,7660
+#define	  SOLO_VI_MOSAIC_SX(208,7709
+#define	  SOLO_VI_MOSAIC_EX(209,7752
+#define	  SOLO_VI_MOSAIC_SY(210,7795
+#define	  SOLO_VI_MOSAIC_EY(211,7837
+#define	SOLO_VI_WIN_CTRL0(213,7880
+#define	SOLO_VI_WIN_CTRL1(214,7932
+#define	  SOLO_VI_WIN_CHANNEL(216,7985
+#define	  SOLO_VI_WIN_PIP(218,8030
+#define	  SOLO_VI_WIN_SCALE(219,8071
+#define	  SOLO_VI_WIN_SX(221,8115
+#define	  SOLO_VI_WIN_EX(222,8155
+#define	  SOLO_VI_WIN_SY(224,8195
+#define	  SOLO_VI_WIN_EY(225,8235
+#define	SOLO_VI_WIN_ON(227,8275
+#define SOLO_VI_WIN_SW	229,8325
+#define SOLO_VI_WIN_LIVE_AUTO_MUTE	230,8358
+#define	SOLO_VI_MOT_ADR	232,8402
+#define	  SOLO_VI_MOTION_EN(233,8436
+#define	SOLO_VI_MOT_CTRL	234,8484
+#define	  SOLO_VI_MOTION_FRAME_COUNT(235,8518
+#define	  SOLO_VI_MOTION_SAMPLE_LENGTH(236,8569
+#define	  SOLO_VI_MOTION_INTR_START_STOP	237,8621
+#define	  SOLO_VI_MOTION_FREEZE_DATA	238,8670
+#define	  SOLO_VI_MOTION_SAMPLE_COUNT(239,8716
+#define SOLO_VI_MOT_CLEAR	240,8766
+#define SOLO_VI_MOT_STATUS	241,8801
+#define	  SOLO_VI_MOTION_CNT(242,8837
+#define SOLO_VI_MOTION_BORDER	243,8880
+#define SOLO_VI_MOTION_BAR	244,8919
+#define	  SOLO_VI_MOTION_Y_SET	245,8955
+#define	  SOLO_VI_MOTION_Y_ADD	246,8996
+#define	  SOLO_VI_MOTION_CB_SET	247,9037
+#define	  SOLO_VI_MOTION_CB_ADD	248,9079
+#define	  SOLO_VI_MOTION_CR_SET	249,9121
+#define	  SOLO_VI_MOTION_CR_ADD	250,9163
+#define	  SOLO_VI_MOTION_Y_VALUE(251,9205
+#define	  SOLO_VI_MOTION_CB_VALUE(252,9252
+#define	  SOLO_VI_MOTION_CR_VALUE(253,9299
+#define	SOLO_VO_FMT_ENC	255,9347
+#define	  SOLO_VO_SCAN_MODE_PROGRESSIVE	256,9381
+#define	  SOLO_VO_FMT_TYPE_PAL	257,9430
+#define   SOLO_VO_FMT_TYPE_NTSC	258,9471
+#define	  SOLO_VO_USER_SET	259,9507
+#define	  SOLO_VO_FI_CHANGE	261,9545
+#define	  SOLO_VO_USER_COLOR_SET_VSYNC	262,9583
+#define	  SOLO_VO_USER_COLOR_SET_HSYNC	263,9631
+#define	  SOLO_VO_USER_COLOR_SET_NAV	264,9679
+#define	  SOLO_VO_USER_COLOR_SET_NAH	265,9725
+#define	  SOLO_VO_NA_COLOR_Y(266,9771
+#define	  SOLO_VO_NA_COLOR_CB(267,9814
+#define	  SOLO_VO_NA_COLOR_CR(268,9864
+#define	SOLO_VO_ACT_H	270,9915
+#define	  SOLO_VO_H_BLANK(271,9947
+#define	  SOLO_VO_H_START(272,9988
+#define	  SOLO_VO_H_STOP(273,10029
+#define	SOLO_VO_ACT_V	275,10069
+#define	  SOLO_VO_V_BLANK(276,10101
+#define	  SOLO_VO_V_START(277,10142
+#define	  SOLO_VO_V_STOP(278,10183
+#define	SOLO_VO_RANGE_HV	280,10223
+#define	  SOLO_VO_SYNC_INVERT	281,10257
+#define	  SOLO_VO_HSYNC_INVERT	282,10297
+#define	  SOLO_VO_VSYNC_INVERT	283,10338
+#define	  SOLO_VO_H_LEN(284,10379
+#define	  SOLO_VO_V_LEN(285,10418
+#define	SOLO_VO_DISP_CTRL	287,10457
+#define	  SOLO_VO_DISP_ON	288,10492
+#define	  SOLO_VO_DISP_ERASE_COUNT(289,10528
+#define	  SOLO_VO_DISP_DOUBLE_SCAN	290,10581
+#define	  SOLO_VO_DISP_SINGLE_PAGE	291,10625
+#define	  SOLO_VO_DISP_BASE(292,10669
+#define SOLO_VO_DISP_ERASE	294,10724
+#define	  SOLO_VO_DISP_ERASE_ON	295,10760
+#define	SOLO_VO_ZOOM_CTRL	297,10802
+#define	  SOLO_VO_ZOOM_VER_ON	298,10837
+#define	  SOLO_VO_ZOOM_HOR_ON	299,10877
+#define	  SOLO_VO_ZOOM_V_COMP	300,10917
+#define	  SOLO_VO_ZOOM_SX(301,10957
+#define	  SOLO_VO_ZOOM_SY(302,11002
+#define SOLO_VO_FREEZE_CTRL	304,11047
+#define	  SOLO_VO_FREEZE_ON	305,11084
+#define	  SOLO_VO_FREEZE_INTERPOLATION	306,11121
+#define	SOLO_VO_BKG_COLOR	308,11169
+#define	  SOLO_BG_Y(309,11204
+#define	  SOLO_BG_U(310,11240
+#define	  SOLO_BG_V(311,11275
+#define	SOLO_VO_DEINTERLACE	313,11311
+#define	  SOLO_VO_DEINTERLACE_THRESHOLD(314,11348
+#define	  SOLO_VO_DEINTERLACE_EDGE_VALUE(315,11400
+#define SOLO_VO_BORDER_LINE_COLOR	317,11454
+#define SOLO_VO_BORDER_FILL_COLOR	318,11496
+#define SOLO_VO_BORDER_LINE_MASK	319,11538
+#define SOLO_VO_BORDER_FILL_MASK	320,11579
+#define SOLO_VO_BORDER_X(322,11621
+#define SOLO_VO_BORDER_Y(323,11668
+#define SOLO_VO_CELL_EXT_SET	325,11716
+#define SOLO_VO_CELL_EXT_START	326,11754
+#define SOLO_VO_CELL_EXT_STOP	327,11794
+#define SOLO_VO_CELL_EXT_SET2	329,11834
+#define SOLO_VO_CELL_EXT_START2	330,11873
+#define SOLO_VO_CELL_EXT_STOP2	331,11914
+#define SOLO_VO_RECTANGLE_CTRL(333,11955
+#define SOLO_VO_RECTANGLE_START(334,12008
+#define SOLO_VO_RECTANGLE_STOP(335,12062
+#define SOLO_VO_CURSOR_POS	337,12116
+#define SOLO_VO_CURSOR_CLR	338,12154
+#define SOLO_VO_CURSOR_CLR2	339,12192
+#define SOLO_VO_CURSOR_MASK(340,12231
+#define SOLO_VO_EXPANSION(342,12284
+#define	SOLO_OSG_CONFIG	344,12335
+#define	  SOLO_VO_OSG_ON	345,12369
+#define	  SOLO_VO_OSG_COLOR_MUTE	346,12404
+#define	  SOLO_VO_OSG_ALPHA_RATE(347,12446
+#define	  SOLO_VO_OSG_ALPHA_BG_RATE(348,12493
+#define	  SOLO_VO_OSG_BASE(349,12543
+#define SOLO_OSG_ERASE	351,12604
+#define	  SOLO_OSG_ERASE_ON	352,12637
+#define	  SOLO_OSG_ERASE_OFF	353,12674
+#define SOLO_VO_OSG_BLINK	355,12713
+#define	  SOLO_VO_OSG_BLINK_ON	356,12748
+#define	  SOLO_VO_OSG_BLINK_INTREVAL18	357,12788
+#define SOLO_CAP_BASE	359,12836
+#define	  SOLO_CAP_MAX_PAGE(360,12868
+#define	  SOLO_CAP_BASE_ADDR(361,12911
+#define SOLO_CAP_BTW	362,12954
+#define	  SOLO_CAP_PROG_BANDWIDTH(363,12985
+#define	  SOLO_CAP_MAX_BANDWIDTH(364,13032
+#define SOLO_DIM_SCALE1	366,13079
+#define SOLO_DIM_SCALE2	367,13113
+#define SOLO_DIM_SCALE3	368,13147
+#define SOLO_DIM_SCALE4	369,13181
+#define SOLO_DIM_SCALE5	370,13215
+#define	  SOLO_DIM_V_MB_NUM_FRAME(371,13249
+#define	  SOLO_DIM_V_MB_NUM_FIELD(372,13297
+#define	  SOLO_DIM_H_MB_NUM(373,13344
+#define SOLO_DIM_PROG	375,13387
+#define SOLO_CAP_STATUS	376,13419
+#define SOLO_CAP_CH_SCALE(378,13454
+#define SOLO_CAP_CH_COMP_ENA_E(379,13504
+#define SOLO_CAP_CH_INTV(380,13558
+#define SOLO_CAP_CH_INTV_E(381,13607
+#define SOLO_VE_CFG0	384,13660
+#define	  SOLO_VE_TWO_PAGE_MODE	385,13691
+#define	  SOLO_VE_INTR_CTRL(386,13733
+#define	  SOLO_VE_BLOCK_SIZE(387,13776
+#define	  SOLO_VE_BLOCK_BASE(388,13820
+#define SOLO_VE_CFG1	390,13864
+#define	  SOLO_VE_BYTE_ALIGN(391,13895
+#define	  SOLO_VE_INSERT_INDEX	392,13939
+#define	  SOLO_VE_MOTION_MODE(393,13980
+#define	  SOLO_VE_MOTION_BASE(394,14024
+#define   SOLO_VE_MPEG_SIZE_H(395,14067
+#define   SOLO_VE_JPEG_SIZE_H(396,14127
+#define   SOLO_VE_INSERT_INDEX_JPEG	397,14187
+#define SOLO_VE_WMRK_POLY	399,14251
+#define SOLO_VE_VMRK_INIT_KEY	400,14286
+#define SOLO_VE_WMRK_STRL	401,14325
+#define SOLO_VE_ENCRYP_POLY	402,14360
+#define SOLO_VE_ENCRYP_INIT	403,14397
+#define SOLO_VE_ATTR	404,14434
+#define	  SOLO_VE_LITTLE_ENDIAN	405,14465
+#define	  SOLO_COMP_ATTR_RN	406,14507
+#define	  SOLO_COMP_ATTR_FCODE(407,14545
+#define	  SOLO_COMP_TIME_INC(408,14590
+#define	  SOLO_COMP_TIME_WIDTH(409,14634
+#define	  SOLO_DCT_INTERVAL(410,14679
+#define SOLO_VE_COMPT_MOT	411,14722
+#define SOLO_VE_STATE(413,14774
+#define SOLO_VE_JPEG_QP_TBL	415,14819
+#define SOLO_VE_JPEG_QP_CH_L	416,14856
+#define SOLO_VE_JPEG_QP_CH_H	417,14894
+#define SOLO_VE_JPEG_CFG	418,14932
+#define SOLO_VE_JPEG_CTRL	419,14966
+#define SOLO_VE_CODE_ENCRYPT	420,15001
+#define SOLO_VE_JPEG_CFG1	421,15055
+#define SOLO_VE_WMRK_ENABLE	422,15106
+#define SOLO_VE_OSD_CH	423,15159
+#define SOLO_VE_OSD_BASE	424,15192
+#define SOLO_VE_OSD_CLR	425,15226
+#define SOLO_VE_OSD_OPT	426,15260
+#define   SOLO_VE_OSD_V_DOUBLE	427,15294
+#define SOLO_VE_CH_INTL(429,15352
+#define SOLO_VE_CH_MOT(430,15400
+#define SOLO_VE_CH_QP(431,15447
+#define SOLO_VE_CH_QP_E(432,15493
+#define SOLO_VE_CH_GOP(433,15541
+#define SOLO_VE_CH_GOP_E(434,15588
+#define SOLO_VE_CH_REF_BASE(435,15637
+#define SOLO_VE_CH_REF_BASE_E(436,15689
+#define SOLO_VE_MPEG4_QUE(438,15743
+#define SOLO_VE_JPEG_QUE(439,15791
+#define SOLO_VD_CFG0	441,15839
+#define	  SOLO_VD_CFG_NO_WRITE_NO_WINDOW	442,15870
+#define	  SOLO_VD_CFG_BUSY_WIAT_CODE	443,15919
+#define	  SOLO_VD_CFG_BUSY_WIAT_REF	444,15965
+#define	  SOLO_VD_CFG_BUSY_WIAT_RES	445,16010
+#define	  SOLO_VD_CFG_BUSY_WIAT_MS	446,16055
+#define	  SOLO_VD_CFG_SINGLE_MODE	447,16099
+#define	  SOLO_VD_CFG_SCAL_MANUAL	448,16142
+#define	  SOLO_VD_CFG_USER_PAGE_CTRL	449,16185
+#define	  SOLO_VD_CFG_LITTLE_ENDIAN	450,16231
+#define	  SOLO_VD_CFG_START_FI	451,16276
+#define	  SOLO_VD_CFG_ERR_LOCK	452,16317
+#define	  SOLO_VD_CFG_ERR_INT_ENA	453,16358
+#define	  SOLO_VD_CFG_TIME_WIDTH(454,16401
+#define	  SOLO_VD_CFG_DCT_INTERVAL(455,16447
+#define SOLO_VD_CFG1	457,16496
+#define	SOLO_VD_DEINTERLACE	459,16528
+#define	  SOLO_VD_DEINTERLACE_THRESHOLD(460,16565
+#define	  SOLO_VD_DEINTERLACE_EDGE_VALUE(461,16617
+#define SOLO_VD_CODE_ADR	463,16671
+#define SOLO_VD_CTRL	465,16706
+#define	  SOLO_VD_OPER_ON	466,16737
+#define	  SOLO_VD_MAX_ITEM(467,16773
+#define SOLO_VD_STATUS0	469,16815
+#define	  SOLO_VD_STATUS0_INTR_ACK	470,16849
+#define	  SOLO_VD_STATUS0_INTR_EMPTY	471,16893
+#define	  SOLO_VD_STATUS0_INTR_ERR	472,16939
+#define SOLO_VD_STATUS1	474,16984
+#define SOLO_VD_IDX0	476,17019
+#define	  SOLO_VD_IDX_INTERLACE	477,17050
+#define	  SOLO_VD_IDX_CHANNEL(478,17092
+#define	  SOLO_VD_IDX_SIZE(479,17136
+#define SOLO_VD_IDX1	481,17178
+#define	  SOLO_VD_IDX_SRC_SCALE(482,17209
+#define	  SOLO_VD_IDX_WINDOW(483,17255
+#define	  SOLO_VD_IDX_DEINTERLACE	484,17299
+#define	  SOLO_VD_IDX_H_BLOCK(485,17342
+#define	  SOLO_VD_IDX_V_BLOCK(486,17385
+#define SOLO_VD_IDX2	488,17429
+#define	  SOLO_VD_IDX_REF_BASE_SIDE	489,17460
+#define	  SOLO_VD_IDX_REF_BASE(490,17505
+#define SOLO_VD_IDX3	492,17560
+#define	  SOLO_VD_IDX_DISP_SCALE(493,17591
+#define	  SOLO_VD_IDX_INTERLACE_WR	494,17638
+#define	  SOLO_VD_IDX_INTERPOL	495,17682
+#define	  SOLO_VD_IDX_HOR2X	496,17723
+#define	  SOLO_VD_IDX_OFFSET_X(497,17761
+#define	  SOLO_VD_IDX_OFFSET_Y(498,17806
+#define SOLO_VD_IDX4	500,17851
+#define	  SOLO_VD_IDX_DEC_WR_PAGE(501,17882
+#define	  SOLO_VD_IDX_DISP_RD_PAGE(502,17929
+#define SOLO_VD_WR_PAGE(504,17978
+#define SOLO_GPIO_CONFIG_0	507,18030
+#define SOLO_GPIO_CONFIG_1	508,18066
+#define SOLO_GPIO_DATA_OUT	509,18102
+#define SOLO_GPIO_DATA_IN	510,18138
+#define SOLO_GPIO_INT_ACK_STA	511,18173
+#define SOLO_GPIO_INT_ENA	512,18212
+#define SOLO_GPIO_INT_CFG_0	513,18247
+#define SOLO_GPIO_INT_CFG_1	514,18284
+#define SOLO_IIC_CFG	517,18323
+#define	  SOLO_IIC_ENABLE	518,18354
+#define	  SOLO_IIC_PRESCALE(519,18389
+#define SOLO_IIC_CTRL	521,18432
+#define	  SOLO_IIC_AUTO_CLEAR	522,18464
+#define	  SOLO_IIC_STATE_RX_ACK	523,18504
+#define	  SOLO_IIC_STATE_BUSY	524,18546
+#define	  SOLO_IIC_STATE_SIG_ERR	525,18586
+#define	  SOLO_IIC_STATE_TRNS	526,18628
+#define	  SOLO_IIC_CH_SET(527,18668
+#define	  SOLO_IIC_ACK_EN	528,18708
+#define	  SOLO_IIC_START	529,18743
+#define	  SOLO_IIC_STOP	530,18777
+#define	  SOLO_IIC_READ	531,18811
+#define	  SOLO_IIC_WRITE	532,18845
+#define SOLO_IIC_TXD	534,18880
+#define SOLO_IIC_RXD	535,18911
+#define SOLO_UART_CONTROL(540,18967
+#define	  SOLO_UART_CLK_DIV(541,19020
+#define	  SOLO_MODEM_CTRL_EN	542,19063
+#define	  SOLO_PARITY_ERROR_DROP	543,19102
+#define	  SOLO_IRQ_ERR_EN	544,19144
+#define	  SOLO_IRQ_RX_EN	545,19180
+#define	  SOLO_IRQ_TX_EN	546,19215
+#define	  SOLO_RX_EN	547,19250
+#define	  SOLO_TX_EN	548,19282
+#define	  SOLO_UART_HALF_DUPLEX	549,19314
+#define	  SOLO_UART_LOOPBACK	550,19356
+#define	  SOLO_BAUDRATE_230400	552,19396
+#define	  SOLO_BAUDRATE_115200	553,19445
+#define	  SOLO_BAUDRATE_57600	554,19494
+#define	  SOLO_BAUDRATE_38400	555,19542
+#define	  SOLO_BAUDRATE_19200	556,19590
+#define	  SOLO_BAUDRATE_9600	557,19638
+#define	  SOLO_BAUDRATE_4800	558,19685
+#define	  SOLO_BAUDRATE_2400	559,19732
+#define	  SOLO_BAUDRATE_1200	560,19779
+#define	  SOLO_BAUDRATE_300	561,19826
+#define	  SOLO_UART_DATA_BIT_8	563,19873
+#define	  SOLO_UART_DATA_BIT_7	564,19913
+#define	  SOLO_UART_DATA_BIT_6	565,19953
+#define	  SOLO_UART_DATA_BIT_5	566,19993
+#define	  SOLO_UART_STOP_BIT_1	568,20034
+#define	  SOLO_UART_STOP_BIT_2	569,20074
+#define	  SOLO_UART_PARITY_NONE	571,20115
+#define	  SOLO_UART_PARITY_EVEN	572,20156
+#define	  SOLO_UART_PARITY_ODD	573,20197
+#define SOLO_UART_STATUS(575,20238
+#define	  SOLO_UART_CTS	576,20290
+#define	  SOLO_UART_RX_BUSY	577,20325
+#define	  SOLO_UART_OVERRUN	578,20363
+#define	  SOLO_UART_FRAME_ERR	579,20401
+#define	  SOLO_UART_PARITY_ERR	580,20441
+#define	  SOLO_UART_TX_BUSY	581,20482
+#define	  SOLO_UART_RX_BUFF_CNT(583,20520
+#define	  SOLO_UART_RX_BUFF_SIZE	584,20580
+#define	  SOLO_UART_TX_BUFF_CNT(585,20616
+#define	  SOLO_UART_TX_BUFF_SIZE	586,20676
+#define SOLO_UART_TX_DATA(588,20713
+#define	  SOLO_UART_TX_DATA_PUSH	589,20766
+#define SOLO_UART_RX_DATA(590,20807
+#define	  SOLO_UART_RX_DATA_POP	591,20860
+#define SOLO_TIMER_CLOCK_NUM	593,20902
+#define SOLO_TIMER_WATCHDOG	594,20940
+#define SOLO_TIMER_USEC	595,20977
+#define SOLO_TIMER_SEC	596,21011
+#define SOLO_TIMER_USEC_LSB	597,21044
+#define SOLO_AUDIO_CONTROL	599,21098
+#define	  SOLO_AUDIO_ENABLE	600,21134
+#define	  SOLO_AUDIO_MASTER_MODE	601,21172
+#define	  SOLO_AUDIO_I2S_MODE	602,21214
+#define	  SOLO_AUDIO_I2S_LR_SWAP	603,21254
+#define	  SOLO_AUDIO_I2S_8BIT	604,21296
+#define	  SOLO_AUDIO_I2S_MULTI(605,21336
+#define	  SOLO_AUDIO_MIX_9TO0	606,21381
+#define	  SOLO_AUDIO_DEC_9TO0_VOL(607,21421
+#define	  SOLO_AUDIO_MIX_19TO10	608,21469
+#define	  SOLO_AUDIO_DEC_19TO10_VOL(609,21511
+#define	  SOLO_AUDIO_MODE(610,21561
+#define SOLO_AUDIO_SAMPLE	611,21601
+#define	  SOLO_AUDIO_EE_MODE_ON	612,21636
+#define	  SOLO_AUDIO_EE_ENC_CH(613,21678
+#define	  SOLO_AUDIO_BITRATE(614,21725
+#define	  SOLO_AUDIO_CLK_DIV(615,21769
+#define SOLO_AUDIO_FDMA_INTR	616,21812
+#define	  SOLO_AUDIO_FDMA_INTERVAL(617,21850
+#define	  SOLO_AUDIO_INTR_ORDER(618,21899
+#define	  SOLO_AUDIO_FDMA_BASE(619,21945
+#define SOLO_AUDIO_EVOL_0	620,21989
+#define SOLO_AUDIO_EVOL_1	621,22024
+#define	  SOLO_AUDIO_EVOL(622,22059
+#define SOLO_AUDIO_STA	623,22118
+#define SOLO_WATCHDOG	626,22153
+#define WATCHDOG_STAT(627,22185
+#define WATCHDOG_TIME(628,22229
+
+solo6010-tw28.c,1121
+#define DEFAULT_HDELAY_NTSC	27,1070
+#define DEFAULT_HACTIVE_NTSC	28,1108
+#define DEFAULT_VDELAY_NTSC	29,1149
+#define DEFAULT_VACTIVE_NTSC	30,1186
+#define DEFAULT_HDELAY_PAL	32,1227
+#define DEFAULT_HACTIVE_PAL	33,1264
+#define DEFAULT_VDELAY_PAL	34,1318
+#define DEFAULT_VACTIVE_PAL	35,1350
+static u8 tbl_tw2864_template[tbl_tw2864_template37,1405
+static u8 tbl_tw2865_ntsc_template[tbl_tw2865_ntsc_template72,3141
+static u8 tbl_tw2865_pal_template[tbl_tw2865_pal_template107,4882
+#define is_tw286x(142,6622
+static u8 tw_readbyte(144,6689
+static void tw_writebyte(157,7037
+static void tw_write_and_verify(170,7394
+static int tw2865_setup(188,7808
+static int tw2864_setup(238,9163
+static int tw2815_setup(324,11727
+#define FIRST_ACTIVE_LINE	482,16417
+#define LAST_ACTIVE_LINE	483,16450
+static void saa7128_setup(485,16483
+int solo_tw28_init(543,18180
+int tw28_get_video_status(609,19926
+u16 tw28_get_audio_status(626,20341
+int tw28_set_ctrl_val(642,20630
+int tw28_get_ctrl_val(716,22336
+void tw2815_Set_AudioOutVol(776,23824
+u8 tw28_get_audio_gain(793,24248
+void tw28_set_audio_gain(809,24576
+
+solo6010-tw28.h,734
+#define __SOLO6010_TW28_H21,871
+#define TW_NUM_CHIP	25,921
+#define TW_BASE_ADDR	26,946
+#define TW_CHIP_OFFSET_ADDR(27,975
+#define TW_AV_STAT_ADDR	30,1043
+#define TW_HUE_ADDR(31,1075
+#define TW_SATURATION_ADDR(32,1121
+#define TW_CONTRAST_ADDR(33,1173
+#define TW_BRIGHTNESS_ADDR(34,1223
+#define TW_AUDIO_OUTPUT_VOL_ADDR	35,1275
+#define TW_AUDIO_INPUT_GAIN_ADDR(36,1314
+#define TW286x_AV_STAT_ADDR	39,1392
+#define TW286x_HUE_ADDR(40,1427
+#define TW286x_SATURATIONU_ADDR(41,1476
+#define TW286x_SATURATIONV_ADDR(42,1532
+#define TW286x_CONTRAST_ADDR(43,1588
+#define TW286x_BRIGHTNESS_ADDR(44,1642
+#define TW286x_SHARPNESS(45,1697
+#define TW286x_AUDIO_OUTPUT_VOL_ADDR	46,1747
+#define TW286x_AUDIO_INPUT_GAIN_ADDR(47,1790
+
+solo6010-v4l2.c,2453
+#define SOLO_DISP_PIX_FIELD	32,1103
+#define SOLO_HW_BPL	35,1233
+#define solo_vlines(36,1259
+#define solo_image_size(37,1313
+#define solo_bytesperline(39,1402
+#define MIN_VID_BUFFERS	41,1463
+struct solo_filehandle 44,1516
+	struct solo6010_dev	*solo_dev;solo_dev45,1541
+	struct videobuf_queue	vidq;46,1573
+	struct task_struct      *kthread;kthread47,1602
+	spinlock_t		slock;48,1637
+	int			old_write;49,1657
+	struct list_head	vidq_active;50,1675
+unsigned video_nr 53,1710
+static void erase_on(57,1850
+static int erase_off(64,2029
+void solo_video_in_isr(79,2372
+static void solo_win_setup(84,2488
+static int solo_v4l2_ch_ext_4up(102,2996
+static int solo_v4l2_ch_ext_16up(134,3928
+static int solo_v4l2_ch(164,4741
+static int solo_v4l2_set_ch(189,5343
+static int solo_fillbuf(204,5630
+static void solo_thread_try(251,6711
+static int solo_thread(286,7391
+static int solo_start_thread(308,7874
+static void solo_stop_thread(325,8226
+static int solo_buf_setup(337,8477
+static int solo_buf_prepare(351,8804
+static void solo_buf_queue(380,9561
+static void solo_buf_release(391,9876
+static struct videobuf_queue_ops solo_video_qops 398,10042
+static unsigned int solo_v4l2_poll(405,10227
+static int solo_v4l2_mmap(413,10436
+static int solo_v4l2_open(421,10659
+static ssize_t solo_v4l2_read(461,11681
+static int solo_v4l2_release(471,11989
+static int solo_querycap(488,12281
+static int solo_enum_ext_input(505,12769
+static int solo_enum_input(531,13438
+static int solo_set_input(560,14154
+static int solo_get_input(567,14320
+static int solo_enum_fmt_cap(576,14489
+static int solo_try_fmt_cap(588,14740
+static int solo_set_fmt_cap(616,15534
+static int solo_get_fmt_cap(629,15840
+static int solo_reqbufs(647,16364
+static int solo_querybuf(655,16540
+static int solo_qbuf(662,16706
+static int solo_dqbuf(669,16864
+static int solo_streamon(676,17052
+static int solo_streamoff(686,17268
+static int solo_s_std(696,17486
+static const u32 solo_motion_ctrls[solo_motion_ctrls701,17571
+static const u32 *solo_ctrl_classes[solo_ctrl_classes706,17643
+static int solo_disp_queryctrl(711,17715
+static int solo_disp_g_ctrl(735,18270
+static int solo_disp_s_ctrl(750,18606
+static const struct v4l2_file_operations solo_v4l2_fops 779,19437
+static const struct v4l2_ioctl_ops solo_v4l2_ioctl_ops 792,19760
+static struct video_device solo_v4l2_template 817,20628
+int solo_v4l2_init(828,20907
+void solo_v4l2_exit(877,22056
+
+solo6010-v4l2-enc.c,4281
+#define MIN_VID_BUFFERS	33,1126
+#define FRAME_BUF_SIZE	34,1153
+#define MP4_QS	35,1190
+#define DMA_ALIGN	36,1210
+enum solo_enc_types 40,1261
+	SOLO_ENC_TYPE_STD,41,1283
+	SOLO_ENC_TYPE_EXT,42,1303
+struct solo_enc_fh 45,1327
+	struct			solo_enc_dev *enc;enc46,1348
+	u32			fmt;47,1377
+	u8			enc_on;48,1389
+	enum solo_enc_types	type;49,1403
+	struct videobuf_queue	vidq;50,1430
+	struct list_head	vidq_active;51,1459
+	int			desc_count;52,1490
+	int			desc_nelts;53,1509
+        struct solo_p2m_desc	*desc_items;desc_items54,1528
+	dma_addr_t		desc_dma;55,1570
+	struct list_head	list;56,1593
+struct solo_videobuf 59,1621
+	struct videobuf_buffer	vb;60,1644
+	unsigned int		flags;61,1672
+static unsigned char vop_6010_ntsc_d1[vop_6010_ntsc_d165,1713
+static unsigned char vop_6010_ntsc_cif[vop_6010_ntsc_cif72,1957
+static unsigned char vop_6010_pal_d1[vop_6010_pal_d179,2202
+static unsigned char vop_6010_pal_cif[vop_6010_pal_cif86,2445
+static unsigned char vop_6110_ntsc_d1[vop_6110_ntsc_d194,2706
+static unsigned char vop_6110_ntsc_cif[vop_6110_ntsc_cif100,2901
+static unsigned char vop_6110_pal_d1[vop_6110_pal_d1106,3097
+static unsigned char vop_6110_pal_cif[vop_6110_pal_cif112,3291
+static const u32 solo_user_ctrls[solo_user_ctrls119,3487
+static const u32 solo_mpeg_ctrls[solo_mpeg_ctrls130,3688
+static const u32 solo_private_ctrls[solo_private_ctrls136,3796
+static const u32 solo_fmtx_ctrls[solo_fmtx_ctrls142,3898
+static const u32 *solo_ctrl_classes[solo_ctrl_classes149,4029
+struct solo_enc_buf 157,4156
+	enum solo_enc_types	type;158,4178
+	int			vop_type;159,4205
+	unsigned int		mpeg_off,160,4222
+	unsigned int		mpeg_off, mpeg_size;160,4222
+	unsigned int		jpeg_off,161,4258
+	unsigned int		jpeg_off, jpeg_size;161,4258
+	int			motion;162,4294
+static int solo_is_motion_on(165,4313
+static int solo_motion_detected(179,4660
+static void solo_motion_toggle(196,5105
+static void solo_update_mode(219,5730
+static int __solo_enc_on(298,8000
+static int solo_enc_on(365,9864
+static void __solo_enc_off(377,10085
+static void solo_enc_off(400,10621
+static int solo_send_desc(411,10906
+static int solo_fill_jpeg(484,12465
+static int solo_fill_mpeg(507,13212
+static int solo_enc_fillbuf(554,14403
+static void solo_enc_handle_one(608,15780
+void solo_enc_v4l2_isr(639,16470
+static void solo_handle_ring(644,16586
+static int solo_ring_thread(698,18059
+static int solo_enc_buf_setup(719,18503
+static int solo_enc_buf_prepare(730,18733
+static void solo_enc_buf_queue(755,19298
+static void solo_enc_buf_release(764,19517
+static struct videobuf_queue_ops solo_enc_video_qops 774,19757
+static unsigned int solo_enc_poll(781,19962
+static int solo_enc_mmap(789,20158
+static int solo_ring_start(796,20328
+static void solo_ring_stop(814,20742
+static int solo_enc_open(828,21066
+static ssize_t solo_enc_read(883,22460
+static int solo_enc_release(899,22856
+static int solo_enc_querycap(923,23357
+static int solo_enc_enum_input(942,23940
+static int solo_enc_set_input(967,24556
+static int solo_enc_get_input(975,24684
+static int solo_enc_enum_fmt_cap(983,24805
+static int solo_enc_try_fmt_cap(1004,25194
+static int solo_enc_set_fmt_cap(1043,26369
+static int solo_enc_get_fmt_cap(1078,27128
+static int solo_enc_reqbufs(1096,27612
+static int solo_enc_querybuf(1104,27792
+static int solo_enc_qbuf(1112,27966
+static int solo_enc_dqbuf(1119,28124
+static int solo_enc_streamon(1142,28587
+static int solo_enc_streamoff(1153,28811
+static int solo_enc_s_std(1169,29092
+static int solo_enum_framesizes(1175,29229
+static int solo_enum_frameintervals(1202,29840
+static int solo_g_parm(1226,30461
+static int solo_s_parm(1244,31000
+static int solo_queryctrl(1284,32035
+static int solo_querymenu(1350,33929
+static int solo_g_ctrl(1363,34205
+static int solo_s_ctrl(1397,35040
+static int solo_s_ext_ctrls(1453,36486
+static int solo_g_ext_ctrls(1494,37404
+static const struct v4l2_file_operations solo_enc_fops 1534,38250
+static const struct v4l2_ioctl_ops solo_enc_ioctl_ops 1547,38566
+static struct video_device solo_enc_template 1583,39870
+static struct solo_enc_dev *solo_enc_alloc(solo_enc_alloc1594,40146
+static void solo_enc_free(1657,41743
+int solo_enc_v4l2_init(1666,41898
+void solo_enc_v4l2_exit(1698,42673
+
+solo6x10.ko,77
+¡Ó¡Ê	Œ¡·	À	”âpâãUâxã$ãt$ã|$â$2,4495
+¡Ó¡Ê	Œ¡·	À	”âuËu4,6238
+
+solo6x10.mod.c,64
+struct module __this_module7,124
+__used18,399
+__used158,5462
+
+solo6x10.o,77
+¡Ó¡Ê	Œ¡·	À	”âpâãUâxã$ãt$ã|$â$2,4463
+¡Ó¡Ê	Œ¡·	À	”âuËu4,6206
+
+videobuf-dma-contig.c,974
+struct videobuf_dma_contig_memory 25,717
+	u32 magic;26,753
+	void *vaddr;vaddr27,765
+	dma_addr_t dma_handle;28,779
+	unsigned long size;29,803
+	int is_userptr;30,824
+#define MAGIC_DC_MEM 33,845
+#define MAGIC_CHECK(34,877
+videobuf_vm_open(41,1065
+static void videobuf_vm_close(51,1299
+static struct vm_operations_struct videobuf_vm_ops 109,2619
+static void videobuf_dma_contig_user_put(120,2923
+static int videobuf_dma_contig_user_get(137,3392
+static void *__videobuf_alloc(__videobuf_alloc190,4397
+static void *__videobuf_to_vmalloc(__videobuf_to_vmalloc204,4660
+static int __videobuf_iolock(214,4859
+static int __videobuf_mmap_free(263,6100
+static int __videobuf_mmap_mapper(276,6328
+static int __videobuf_copy_to_user(365,8542
+static int __videobuf_copy_stream(388,9050
+static struct videobuf_qtype_ops qops 418,9912
+void videobuf_queue_dma_contig_init(430,10273
+dma_addr_t videobuf_to_dma_contig(443,10636
+void videobuf_dma_contig_free(453,10839
+
+videobuf-dma-contig.o,11
+tt3,808
+
+TODO,0
+
+solo6x10.mod.o,0
+
+solo6010-v4l2.o,0
+
+solo6010-v4l2-enc.o,0
+
+solo6010-tw28.o,0
+
+solo6010-i2c.o,0
+
+solo6010-gpio.o,0
+
+solo6010-g723.o,0
+
+solo6010-enc.o,0
+
+solo6010-eeprom.o,0
+
+solo6010-disp.o,0
+
+solo6010-core.o,0
+
+Module.symvers,0
+
+modules.order,0
